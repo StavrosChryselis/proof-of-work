@@ -1,0 +1,77 @@
+-- This file has been generated from package.yaml by hpack version 0.27.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 93f3302e22346fbf3623d74c7170db72034a4f195b567c743ee86b89675a316f
+
+name:           proof-of-work
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/githubuser/proof-of-work#readme>
+homepage:       https://github.com/githubuser/proof-of-work#readme
+bug-reports:    https://github.com/githubuser/proof-of-work/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/proof-of-work
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_proof_of_work
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , base16-bytestring
+    , base58-bytestring
+    , bytestring
+    , criterion
+    , cryptonite
+    , deepseq
+    , memory
+    , mtl
+    , optparse-applicative
+    , QuickCheck
+    , crypto-api
+  default-language: Haskell2010
+
+executable proof-of-work-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_proof_of_work
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , proof-of-work
+    , bytestring
+    , text
+    , unix
+    , microtimer
+  default-language: Haskell2010
+
+test-suite proof-of-work-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_proof_of_work
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , proof-of-work
+  default-language: Haskell2010
