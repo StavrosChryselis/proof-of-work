@@ -6,7 +6,6 @@ import qualified Data.ByteArray         as A
 import           Data.ByteString        (ByteString)
 import qualified Data.ByteString        as B
 
--- |Computes the SHA256 hash of the given @'ByteString'@.
 sha256 :: ByteString -> ByteString
 sha256 bs = let digest = hash bs :: Digest SHA256 in B.pack $ A.unpack digest
 
@@ -20,8 +19,8 @@ proofOfWork block difficultyBits = findNonce block 0 target
 
 findNonce :: ByteString -> Integer -> Integer -> Maybe (Integer, ByteString)
 findNonce block nonce target 
-    | nonce >= maxNonce          = Nothing
+    | nonce >= maxNonce        = Nothing
     | bs2i hashResult < target = Just (nonce, hashResult)
-    | otherwise                  = findNonce block (nonce+1) target
+    | otherwise                = findNonce block (nonce+1) target
       where
         hashResult = sha256 $ B.append block $ i2bs_unsized nonce
