@@ -11,6 +11,7 @@ import Data.Text.Encoding (encodeUtf8)
 import Data.Text (pack)
 import System.Microtimer (time)
 import Control.Exception (evaluate)
+import Data.ByteString.Base16 (encode)
 
 main :: IO ()
 main = do
@@ -26,6 +27,7 @@ main = do
             Just (nonce, hashResult) -> do
                 let hashPower = fromIntegral nonce / elapsedTime
                 putStrLn $ "Success with nonce " ++ show nonce
-                putStrLn $ "Hash is " ++ show hashResult
+                putStrLn $ "Hash is " ++ show (encode hashResult)
                 putStrLn $ "Hashing Power is " ++ show hashPower ++ " hashes per second"
         putStrLn $ "Elapsed Time is " ++ show elapsedTime ++ " seconds"
+        putStrLn ""
