@@ -1,15 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE BangPatterns #-}
 
 module Main where
 
 import Lib
-import Control.Monad
-import System.Environment
-import Data.ByteString (ByteString)
+
+import Control.Monad (forM_)
+import System.Environment (getArgs)
 import Data.Text.Encoding (encodeUtf8)
-import Data.Text (Text, pack)
+import Data.Text (pack)
 import System.Microtimer (time)
 import Control.Exception (evaluate)
 
@@ -25,8 +24,8 @@ main = do
         case result of
             Nothing -> putStrLn $ "Failed after " ++ show maxNonce ++ "(max_nonce) tries"
             Just (nonce, hashResult) -> do
-                let hashPower = (fromIntegral nonce) / elapsedTime
+                let hashPower = fromIntegral nonce / elapsedTime
                 putStrLn $ "Success with nonce " ++ show nonce
                 putStrLn $ "Hash is " ++ show hashResult
-                putStrLn $ "Elapsed Time is " ++ show elapsedTime ++ " seconds"
                 putStrLn $ "Hashing Power is " ++ show hashPower ++ " hashes per second"
+        putStrLn $ "Elapsed Time is " ++ show elapsedTime ++ " seconds"
