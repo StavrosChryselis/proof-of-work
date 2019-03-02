@@ -1,4 +1,4 @@
-An implementation of the "so great", "much sophisticated" proof-of-work protocol in 15 lines of haskell code.
+A minimal proof of concept implementaiton of the proof-of-work protocol in 15 lines of haskell code.
 
 # Preparation
 `$ git clone https://github.com/StavrosChryselis/proof-of-work.git`  
